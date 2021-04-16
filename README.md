@@ -1,3 +1,3 @@
 # LinuxGuidesOS
 
-Ein Repo wo alle Ideen und custom programmierte sachen für das geplante LinuxGuidesOS zusammenlaufen
+Ein Repo in dem alle Ideen und custom programmierte Sachen für das geplante LinuxGuidesOS zusammenlaufen
