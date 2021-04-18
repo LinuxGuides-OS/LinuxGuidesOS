@@ -11,4 +11,5 @@ Akuell schauen wir, welche DE wir nehmen. Wahrscheinlich XFCE4, wie bei JeanOS
 - Codename: ?
 - Kernel: 5.4.0
 - Bash: 4.4.20  
+  
 **Stand: 18.04.2021 19:23 Uhr**
