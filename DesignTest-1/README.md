@@ -2,4 +2,5 @@
 
 **Credit:**  
 [XFWM Forest-dark theme](https://www.gnome-look.org/p/1350789/)  
-Wallpaper: Malternative3772  
+Wallpaper: [Malternative3772](https://github.com/Malternative3772)  
+Custom Neofetch: [DasPrombelBread](https://github.com/DasPrombelBread)
