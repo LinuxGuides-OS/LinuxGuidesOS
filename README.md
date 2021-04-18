@@ -9,6 +9,6 @@ Akuell schauen wir, welche DE wir nehmen. Wahrscheinlich XFCE4, wie bei JeanOS
 - Distrobution-Based: Momentan Ubuntu 20.04 LTS. Wenn 20.10 rauskommt werden wir selbstverständlich wechseln.
 - Desktop: XFCE 4.14
 - Codename: ?
-- Kernel: ?
+- Kernel: 5.4.0
 - Bash: 4.4.20
-**Stand: 18.04.2021 17:44 Uhr**
+**Stand: 18.04.2021 19:23 Uhr**
