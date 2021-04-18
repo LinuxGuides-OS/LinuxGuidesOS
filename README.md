@@ -5,7 +5,7 @@ Ein Repo in dem alle Ideen und selbst (um-)programmierte Skripte und anderer Cod
 Das Projekt besteht aus einem Community Projekt, und soll ein 'nachfolger' von JeanOS sein.
 Akuell schauen wir, welche DE wir nehmen. Wahrscheinlich XFCE4, wie bei JeanOS
 
-# So jz aber zu Informationen xd
+# So jz aber zu Informationen xD
 - Distrobution-Based: Momentan Ubuntu 20.04 LTS. Wenn 20.10 rauskommt werden wir selbstverständlich wechseln.
 - Desktop: XFCE 4.14
 - Codename: ?
