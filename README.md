@@ -20,7 +20,7 @@ Projekt, erschaffen von Julius aka Julian.
 
 # Informationen
 
-- Distrobution-Based: Ubuntu 20.04 LTS. Zu 20.10 zu gehen, wird wahrscheinlich **NICHT** gehen, da wir vorerst warten müssen, bis 20.10 als WSL für Win10 kommt. Da aber erst die nächste WSL Versio von Ubuntu wahrscheinlich die nächste LTS sein wird, werden wir vorerst bei 20.04 bleiben
+- Distrobution-Based: Ubuntu 20.04 LTS. Zu 20.10 zu gehen, wird wahrscheinlich **NICHT** gehen, da wir vorerst warten müssen, bis 20.10 als WSL für Win10 kommt. Da aber erst die nächste WSL Version von Ubuntu wahrscheinlich die nächste LTS sein wird, werden wir vorerst bei 20.04 bleiben
 - Desktop: XFCE 4
 - Codename: Aphtodite
 - Kernel: 5.4.72-microsoft-standard-WSL2
