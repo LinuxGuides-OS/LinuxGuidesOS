@@ -12,7 +12,7 @@ Akuell schauen wir, welche DE wir nehmen. Wahrscheinlich XFCE4, wie bei JeanOS
 - Kernel: 5.4.0
 - Bash: 4.4.20  
   
-**Stand: 18.04.2021 19:23 Uhr**
+**Stand: 18.04.2021 23:55 Uhr**
 
 # BRANDNEU! LinuxGuides OS for WSL2
 
