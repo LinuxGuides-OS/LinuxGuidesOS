@@ -6,7 +6,8 @@ Das Projekt besteht aus einem Community Projekt, und soll ein 'nachfolger' von J
 Akuell schauen wir, welche DE wir nehmen. Wahrscheinlich XFCE4, wie bei JeanOS
 
 # So jz aber zu Informationen xd
-- Distrobution-Based: Ubuntu 20.04 LTS Minimal + Debian...
+- Distrobution-Based: Momentan Ubuntu 20.04 LTS. Wenn 20.10 rauskommt werden wir selbstverständlich wechseln.
+- Desktop: XFCE
 - Codename: ?
 - Kernel: ?
 - Bash: 4.4.20
