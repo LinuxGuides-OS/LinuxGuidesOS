@@ -5,9 +5,9 @@ Ein Repo in dem alle Ideen und selbst (um-)programmierte Skripte und anderer Cod
 Das Projekt besteht aus einem Community Projekt, und soll ein 'nachfolger' von JeanOS sein.  
 
 # Informationen
-- Distrobution-Based: Momentan Ubuntu 20.04 LTS. Wenn 20.10 rauskommt werden wir selbstverständlich wechseln.
+- Distrobution-Based: Momentan Ubuntu 20.04 LTS. Wenn 21.10 rauskommt werden wir selbstverständlich wechseln.
 - Desktop: XFCE 4.14
-- Codename: Aphtodite
+- Codename: Aphrodite
 - Kernel: 5.4.0
 - Bash: 4.4.20  
   
