@@ -1,0 +1,12 @@
+NAME="LinuxGuides OS"
+VERSION="20.10.DTv2"
+ID=linuxguides
+ID_LIKE=ubuntu
+PRETTY_NAME="LinuxGuides OS 20.10.DTv2"
+VERSION_ID="20.10.DTv2"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=aphrodite
+UBUNTU_CODENAME=groovy
