@@ -1,0 +1,255 @@
+#!/bin/bash
+#
+#
+# The MIT License (MIT)
+#
+# Copyright (c) 2021 LinuxGuides OS
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+#
+# cariables of colors &formats
+black=$(echo -e '\e[30m')
+red=$(echo -e '\e[31m')
+green=$(echo -e '\e[32m')
+brown=$(echo -e '\e[33m')
+blue=$(echo -e '\e[34m')
+purple=$(echo -e '\e[35m')
+cyan=$(echo -e '\033[1m\e[36m')
+yellow=$(echo -e '\e[1;33m')
+white=$(echo -e '\e[1;37m')
+orange=$(echo -e '\e[38;5;202m')
+dark_gray=$(echo -e '\e[1;30m')
+light_gray=$(echo -e '\e[37m')
+light_red=$(echo -e '\e[1;31m')
+light_green=$(echo -e '\e[1;32m')
+light_blue=$(echo -e '\e[1;34m')
+light_purple=$(echo -e '\e[1;35m')
+light_cyan=$(echo -e '\e[1;36m')
+light_orange=$(echo -e '\e[38;5;214m')
+reset=$(echo -e '\033(B\033[m')
+bold=$(echo -e '\033[1m')
+underscore=$(echo -e '\033[4m')
+
+# color & format shortcuts
+c1=$(echo -e '\e[30m')  #black
+c2=$(echo -e '\e[31m')  #red
+c3=$(echo -e '\e[32m')  #green
+c4=$(echo -e '\e[33m')  #brown
+c5=$(echo -e '\e[34m')  #blue
+c6=$(echo -e '\e[35m')  #purple
+c7=$(echo -e '\033[1m\e[36m')  #cyan
+c8=$(echo -e '\e[1;33m')  #yellow
+c9=$(echo -e '\e[1;37m')  #white
+c10=$(echo -e '\e[38;5;202m')  #orange
+c11=$(echo -e '\e[1;30m')  #dark_gray
+c12=$(echo -e '\e[37m')  #light_gray
+c13=$(echo -e '\e[1;31m')  #light_red
+c14=$(echo -e '\e[1;32m')  #light_green
+c15=$(echo -e '\e[1;34m')  #light_blue
+c16=$(echo -e '\e[1;35m')  #light_purple
+c17=$(echo -e '\e[1;36m')  #light_cyan
+c18=$(echo -e '\e[38;5;214m')  #light_orange
+f1=$(echo -e '\033(B\033[m')  #reset
+f2=$(echo -e '\033[1m')  #bold
+f3=$(echo -e '\033[4m')  #underscore
+
+if [[ $1 = -i ]]
+then
+    echo -e "Checking repositorys..."
+    sleep 0.7
+    sudo apt install $2 -y
+    sleep 0.2
+    echo -e "Package ${2} was successfully installed"
+
+else
+if [[ $1 = -r ]]
+then
+    echo -e "Removing package ${2}"
+    sleep 0.7
+    sudo apt remove $2 -y
+    sleep 0.2
+    echo -e "Package ${2} was successfully removed"
+
+else
+if [[ $1 = -u ]]
+then
+    echo -e "Checking for updates..."
+    sleep 0.7
+    sudo apt update
+    sleep 0.2
+
+else
+if [[ $1 = -ug ]]
+then
+    echo -e "Checking for updates..."
+    sleep 1
+    sudo apt upgrade
+
+else
+if [[ $1 = -l ]]
+then
+    echo -e "Listing all packages... This may take a while..."
+    sleep 0.5
+    apt list
+
+else
+if [[ $1 = -ra ]]
+then
+    echo -e "Removing all unused packages now..."
+    sleep 0.5
+    sudo apt autoremove
+
+else
+if [[ $1 = -version ]]
+then
+    echo -e "EP-Version: 1.1.2 (Beta)"
+
+else
+if [[ $1 = -remove-ep ]]
+then
+    sudo rm /usr/bin/ep
+
+else
+if [[ $1 = -more ]]
+then
+    echo -e "${light_green}More commands for EasyPackage${reset}"
+    echo -e "********************************************************"
+    sleep 0.01
+    echo -e "ep -v <Package>: Show the current version of an installed package"
+    echo -e "ep -pi <Package>: Show more informations about an installed package"
+    echo -e "ep -ra: Automatically remove all unused Packages"
+    echo -e "ep -ar: <Repository> Add repositories to your sources list"
+    echo -e "ep -chlog: <Package> Show the changelog of a package"
+    echo -e "ep -ppa:<Launchpad-Name/PPA-Name> Add PPAs using this command"
+    echo -e "ep -ppadis:<Launchpad-Name/PPA-Name> Disable PPAs using this command"
+    echo -e "ep -search <Package> search for some packages you might want to install"
+    echo -e "ep -support: Get support if you have any problems with EasyPackage"
+    echo -e "ep -version: Display current version of Easy Package"
+
+else
+if [[ $1 = -v ]]
+then
+    echo -e "${c7}Current version of ${f3}${2}${f1}${c7}:${f1}"
+    sleep 0.1
+    apt version $2
+
+else
+if [[ $1 = -pi ]]
+then
+    echo -e "${c7}More informations about ${f3}${2}${f1}${c7}:${f1}"
+    sleep 0.1
+    apt show $2
+
+else
+if [[ $1 = -ar ]]
+then
+    echo -e "${c7}Adding repository ${f3}${2}${f1} ${c7}to your sources list${f1}"
+    sleep 0.1
+    sudo apt add-repository $2
+
+else
+if [[ $1 = -search ]]
+then
+    echo -e "${c7}Searching for package ${f3}${2}${f1}${c7}...${f1}"
+    sleep 0.3
+    apt search $2
+
+
+else
+if [[ $1 = -chlog ]]
+then
+    echo -e "${c7}Searching for ${f3}${2}${f1}${c7} changelog...${f1}"
+    sleep 0.2
+    apt changelog $2
+
+else
+if [[ $1 = -ppa ]]
+then
+    echo -e "${c7}Adding PPA ${f3}${2}${f1}${c7}...${f1}"
+    sleep 0.3
+    sudo add-apt-repository ppa:$2
+
+else
+if [[ $1 = -ppadis ]]
+then
+    echo -e "${c7}Disabling PPA ${f3}${2}${f1}${c7}...${f1}"
+    sleep 0.3
+    sudo apt install ppa-purge -y
+    sudo ppa-purge ppa:$2
+
+else
+if [[ $1 = -support ]]
+then
+    echo -e "Der Support ist noch in Arbeit. Aktuell können Sie uns unter" 
+    echo -e "https://linuxguides-os.de/contacts/contacts.html errreichen."
+
+else
+if [[ $1 = -info ]]
+then
+    echo -e "${light_cyan}Info about EasyPackage (SPM)${reset}"
+    echo -e "********************************************************"
+    sleep 0.01
+    echo -e "Easy Package is a little script written in bash,"
+    echo -e "which tries to make the usage of apt a little bit"
+    echo -e "easier for you."
+    echo -e "We know that some people might think this script"
+    echo -e "is very useless, but we dont think so!"
+    echo -e "If you dont like it you can just enter the command"
+    echo -e "${light_blue}'ep -remove-ep'${reset} to remove it."
+
+else
+if [[ $1 = -h ]]
+then
+    echo -e "${light_green}Usage of EasyPackage${reset}"
+    echo -e "********************************************************"
+    sleep 0.01
+    echo -e "ep -i <Package>: Installs a package"
+    echo -e "ep -r <Package>: Removes a package"
+    echo -e "ep -u: Searching for avaible Updates"
+    echo -e "ep -ug: Upgrades Packages if there are avaible updates"
+    echo -e "ep -l: Listing all avaible Packages"
+    echo -e ""
+    echo -e "ep -more: Show more commands"
+    echo -e "ep -info: Show more informations about Easy Package"
+    echo -e ""
+    echo -e "ep Version 1.1.2 (Beta)"
+
+else
+    echo -e "\033[31mERROR:\033[0m Invalid option '${1}'"
+    echo -e "Use ep -h for more Informations"
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
+fi
