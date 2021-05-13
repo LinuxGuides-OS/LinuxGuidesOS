@@ -17,7 +17,6 @@ from playsound import playsound
 
 version = ("1.5.2 (LGOS)")
 q = queue.Queue()
-output = open('/home/felix/Dokumente/vosk/output.txt', 'w')
 
 def int_or_str(text):
     """Helper function for argument parsing."""
