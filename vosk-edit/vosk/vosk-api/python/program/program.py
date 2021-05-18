@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import argparse
+import asyncio
 import os
+import re
 import queue
 import sounddevice as sd
 import vosk
@@ -14,8 +16,7 @@ import random
 import importlib
 from playsound import playsound
 
-
-version = ("1.5.2 (LGOS)")
+version = "Bread Vosk-Edit LGOS-EDITION 1.6.1"
 q = queue.Queue()
 
 def int_or_str(text):
@@ -77,9 +78,7 @@ try:
         dump_fn = None
 
     with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16', channels=1, callback=callback):
-
-            rec = vosk.KaldiRecognizer(model, args.samplerate)
-
+            
             # display informations
             print("")
             print("###########################################################################")
@@ -96,6 +95,7 @@ try:
             print("")
             time.sleep(4)
 
+            rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
                 data = q.get()
                 if rec.AcceptWaveform(data):
@@ -105,443 +105,673 @@ try:
 
                     # randomize
                     randomize = random.choice(['sound1', 'sound2', 'sound3', 'sound4', 'sound5', 'sound6', 'sound7', 'sound8', 'sound9', 'sound10'])
-                    randomize_joke = random.choice(['witz1', 'witz2', 'witz3', 'witz4', 'witz5', 'witz6', 'witz7', 'witz8', 'witz9', 'witz10'])
+                    randomize_joke = random.choice(['witz1', 'witz2', 'witz3', 'witz4', 'witz5', 'witz6', 'witz7', 'witz8', 'witz9', 'witz10', 'witz11', 'witz12', 'witz13', 'witz14', 'witz15', 'witz16', 'witz17', 'witz18', 'witz4', 'witz2', 'witz5', 'witz1', 'witz3', 'witz8', 'witz7', 'witz6', 'witz9', 'witz10', 'witz11', 'witz14', 'witz13', 'witz12', 'witz15', 'witz18', 'witz17', 'witz16'])
+                    
+                    oracle = random.choice(['/usr/vosk/oracle/Ja.mp3', '/usr/vosk/oracle/Nein.mp3', '/usr/vosk/oracle/Vielleicht.mp3', '/usr/vosk/oracle/Wahrscheinlich.mp3', '/usr/vosk/oracle/Eher nicht.mp3', '/usr/vosk/oracle/Sieht so aus.mp3', '/usr/vosk/oracle/Sehr wahrscheinlich.mp3', '/usr/vosk/oracle/Sehr unwahrscheinlich.mp3', '/usr/vosk/oracle/Morgen.mp3', '/usr/vosk/oracle/Gestern.mp3', '/usr/vosk/oracle/Übermorgen.mp3', '/usr/vosk/oracle/Nie.mp3', '/usr/vosk/oracle/Immer.mp3'])
+                    
+                    bullshit = random.choice(['bullshit1', 'bullshit2'])
+
 
                     # Do something with the detected text:
 
                     # TEXT
-                    if vc['text'] == "brot a":
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "a"])
+                    if vc['text'] == "tom a":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "a"]) # press key "a"
                         print('')
                         
-                    if vc['text'] == "brot b":
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "b"])
+                    if vc['text'] == "tom b":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "b"]) # press key "b"
                         print('')
                         
-                    if vc['text'] == "brot c":
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "c"])
+                    if vc['text'] == "tom c":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "c"]) # press key ...
                         print('')
                         
-                    if vc['text'] == "brot d":
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "d"])
+                    if vc['text'] == "tom d":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "d"]) # press ...
                         print('')
                         
-                    if vc['text'] == "brot e":
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "e"])
+                    if vc['text'] == "tom e":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "e"]) # ...
                         print('')
                         
-                    if vc['text'] == "brot f":
+                    if vc['text'] == "tom f":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "f"])
                         print('')
                         
-                    if vc['text'] == "brot g":
+                    if vc['text'] == "tom g":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "g"])
                         print('')
                         
-                    if vc['text'] == "brot h":
+                    if vc['text'] == "tom h":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "h"])
                         print('')
                         
-                    if vc['text'] == "brot i":
+                    if vc['text'] == "tom i":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "i"])
                         print('')
                         
-                    if vc['text'] == "brot j":
+                    if vc['text'] == "tom j":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "j"])
                         print('')
                         
-                    if vc['text'] == "brot k":
+                    if vc['text'] == "tom k":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "k"])
                         print('')
                         
-                    if vc['text'] == "brot l":
+                    if vc['text'] == "tom l":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "l"])
                         print('')
                         
-                    if vc['text'] == "brot m":
+                    if vc['text'] == "tom m":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "m"])
                         print('')
                         
-                    if vc['text'] == "brot n":
+                    if vc['text'] == "tom n":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "n"])
                         print('')
                         
-                    if vc['text'] == "brot o":
+                    if vc['text'] == "tom o":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "o"])
                         print('')
                         
-                    if vc['text'] == "brot p":
+                    if vc['text'] == "tom p":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "p"])
                         print('')
                         
-                    if vc['text'] == "brot q":
+                    if vc['text'] == "tom q":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "q"])
                         print('')
                         
-                    if vc['text'] == "brot r":
+                    if vc['text'] == "tom r":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "r"])
                         print('')
                         
-                    if vc['text'] == "brot s":
+                    if vc['text'] == "tom s":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
                         print('')
                         
-                    if vc['text'] == "brot t":
+                    if vc['text'] == "tom t":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "t"])
                         print('')
                         
-                    if vc['text'] == "brot u":
+                    if vc['text'] == "tom u":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "u"])
                         print('')
                         
-                    if vc['text'] == "brot v":
+                    if vc['text'] == "tom v":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "v"])
                         print('')
                         
-                    if vc['text'] == "brot w":
+                    if vc['text'] == "tom w":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
                         print('')
                         
-                    if vc['text'] == "brot x":
+                    if vc['text'] == "tom x":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "x"])
                         print('')
                         
-                    if vc['text'] == "brot y":
+                    if vc['text'] == "tom y":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "y"])
                         print('')
                         
-                    if vc['text'] == "brot z":
+                    if vc['text'] == "tom z":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "z"])
                         print('')
                         
 
                     #BUCHSTABEN TEXT
-                    if vc['text'] == "brot buchstabe a":
+                    if vc['text'] == "tom buchstabe a":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "a"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe b":
+                    if vc['text'] == "tom buchstabe b":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "b"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe c":
+                    if vc['text'] == "tom buchstabe c":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "c"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe d":
+                    if vc['text'] == "tom buchstabe d":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "d"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe e":
+                    if vc['text'] == "tom buchstabe e":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "e"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe f":
+                    if vc['text'] == "tom buchstabe f":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "f"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe g":
+                    if vc['text'] == "tom buchstabe g":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "g"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe h":
+                    if vc['text'] == "tom buchstabe h":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "h"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe i":
+                    if vc['text'] == "tom buchstabe i":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "i"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe j":
+                    if vc['text'] == "tom buchstabe j":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "j"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe k":
+                    if vc['text'] == "tom buchstabe k":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "k"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe l":
+                    if vc['text'] == "tom buchstabe l":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "l"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe m":
+                    if vc['text'] == "tom buchstabe m":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "m"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe n":
+                    if vc['text'] == "tom buchstabe n":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "n"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe o":
+                    if vc['text'] == "tom buchstabe o":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "o"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe p":
+                    if vc['text'] == "tom buchstabe p":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "p"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe q":
+                    if vc['text'] == "tom buchstabe q":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "q"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe r":
+                    if vc['text'] == "tom buchstabe r":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "r"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe s":
+                    if vc['text'] == "tom buchstabe s":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe t":
+                    if vc['text'] == "tom buchstabe t":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "t"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe u":
+                    if vc['text'] == "tom buchstabe u":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "u"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe v":
+                    if vc['text'] == "tom buchstabe v":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "v"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe w":
+                    if vc['text'] == "tom buchstabe w":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe x":
+                    if vc['text'] == "tom buchstabe x":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "x"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe y":
+                    if vc['text'] == "tom buchstabe y":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "y"])
                         print('')
                         
-                    if vc['text'] == "brot buchstabe z":
+                    if vc['text'] == "tom buchstabe z":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "z"])
                         print('')
                         
 
                     # TEXT-SYMBOLE
-                    if vc['text'] == "brot leer":
+                    if vc['text'] == "tom leer":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "space"])
                         print('')
                         
-                    if vc['text'] == "brot leerzeichen":
+                    if vc['text'] == "tom leerzeichen":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "space"])
                         print('')
                         
-                    if vc['text'] == "brot space":
+                    if vc['text'] == "tom space":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "space"])
                         print('')
                         
-                    if vc['text'] == "brot löschen":
+                    if vc['text'] == "tom löschen":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "BackSpace"])
                         print('')
                         
-                    if vc['text'] == "brot nächste zeile":
+                    if vc['text'] == "tom nächste zeile":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "Return"])
                         print('')
                         
-                    if vc['text'] == "brot eingabe":
+                    if vc['text'] == "tom eingabe":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "Return"])
                         print('')
                         
-                    if vc['text'] == "brot es cape":
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "Escape"])
-                        print('')
-
-                    if vc['text'] == "brot escape":
+                    if vc['text'] == "tom es cape":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "Escape"])
                         print('')
                         
-                    if vc['text'] == "brot seite hoch":
+                    if vc['text'] == "tom seite hoch":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "Page_Up"])
                         print('')
                         
-                    if vc['text'] == "brot seite runter":
+                    if vc['text'] == "tom seite runter":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "Page_Down"])
                         print('')
                         
-                    if vc['text'] == "brot menü":
+                    if vc['text'] == "tom menü":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "Menu"])
                         print('')
                         
-                    if vc['text'] == "brot schifft":
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "Shift_L"])
-                        print('')
-
-                    if vc['text'] == "brot shift":
+                    if vc['text'] == "tom schifft":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "Shift_L"])
                         print('')
                         
 
                     # SPIELE
-                    if vc['text'] == "brot vor":
+                    # ausgelegt für Minecraft, funktioniert noch nicht ganz fehlerfrei!
+                    if vc['text'] == "tom vor":
+                        # drücke viermal W, mache 2s pause, drücke wieder viermal W
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(2)
                         subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
                         print('')
                         
-                    if vc['text'] == "brot vorwärts":
+                    if vc['text'] == "tom vorwärts":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.1)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.1)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.1)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.1)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.1)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.1)
                         subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
                         print('')
                         
-                    if vc['text'] == "brot zurück":
+                    if vc['text'] == "tom weit vorwärts":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.3)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.3)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.3)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.3)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.3)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.3)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.3)
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "w"])
+                        time.sleep(0.3)
+                        print('')
+                        
+                    if vc['text'] == "tom zurück":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
+                        time.sleep(2)
                         subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
                         print('')
                         
-                    if vc['text'] == "brot rückwärts":
+                    if vc['text'] == "tom rückwärts":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
+                        time.sleep(2)
                         subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "s"])
                         print('')
                         
-                    if vc['text'] == "brot links":
+                    if vc['text'] == "tom links":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "a"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "a"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "a"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "a"])
+                        time.sleep(2)
                         subprocess.Popen(["/usr/vosk/keypress.sh", "a"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "a"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "a"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "a"])
                         print('')
                         
-                    if vc['text'] == "brot rechts":
+                    if vc['text'] == "tom rechts":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "d"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "d"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "d"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "d"])
+                        time.sleep(2)
                         subprocess.Popen(["/usr/vosk/keypress.sh", "d"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "d"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "d"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "d"])
                         print('')
                         
-                    if vc['text'] == "brot inventar":
+                    if vc['text'] == "tom inventar":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "e"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "e"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "e"])
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "e"])
+                        time.sleep(2)
                         subprocess.Popen(["/usr/vosk/keypress.sh", "e"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "e"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "e"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "e"])
                         print('')
                         
-                    if vc['text'] == "brot chat":
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "t"])
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "t"])
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "t"])
+                    if vc['text'] == "tom chat":
                         subprocess.Popen(["/usr/vosk/keypress.sh", "t"])
                         print('')
                         
-                    if vc['text'] == "brot springen":
+                    if vc['text'] == "tom springen":
+                        subprocess.Popen(["/usr/vosk/keypress.sh", "space"])
                         subprocess.Popen(["/usr/vosk/keypress.sh", "space"])
                         print('')
                         
-                    if vc['text'] == "brot fliegen":
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "space"])
-                        subprocess.Popen(["/usr/vosk/keypress.sh", "space"])
-                        print('')
-                        
-                    if vc['text'] == "brot schlagen":
+                    if vc['text'] == "tom schlagen":
                         subprocess.Popen(["/usr/vosk/click.sh", "1"])
                         print('')
                         
-                    if vc['text'] == "brot setzen":
+                    if vc['text'] == "tom setzen":
                         subprocess.Popen(["/usr/vosk/click.sh", "3"])
                         print('')
                         
 
                     # PROGRAMME
-                    if vc['text'] == "brot libreoffice":
+                    if vc['text'] == "tom schreiben":
                         subprocess.Popen(["libreoffice"])
                         print('')
                         
-                    if vc['text'] == "brot firefox":
+                    if vc['text'] == "tom libreoffice":
+                        subprocess.Popen(["libreoffice"])
+                        print('')
+                        
+                    if vc['text'] == "tom firefox":
                         subprocess.Popen(["firefox"])
                         print('')
                         
-                    if vc['text'] == "brot terminal":
+                    if vc['text'] == "tom texteditor":
+                        subprocess.Popen(["xed"])
+                        print('')
+                        
+                    if vc['text'] == "tom editor":
+                        subprocess.Popen(["xed"])
+                        print('')
+                        
+                    if vc['text'] == "tom terminal":
                         subprocess.Popen(["gnome-terminal"])
                         print('')
                         
 
                     # MAUS-AKTIONEN
-                    if vc['text'] == "brot klicken":
+                    if vc['text'] == "tom klicken":
                         subprocess.Popen(["/usr/vosk/click.sh", "1"])
                         print('')
                         
-                    if vc['text'] == "brot doppelklick":
+                    if vc['text'] == "tom doppelklick":
                         subprocess.Popen(["/usr/vosk/click.sh", "1"])
                         subprocess.Popen(["/usr/vosk/click.sh", "1"])
                         print('')
                         
-                    if vc['text'] == "brot rechtsklicken":
+                    if vc['text'] == "tom rechtsklicken":
                         subprocess.Popen(["/usr/vosk/click.sh", "3"])
                         print('')
                         
-                    if vc['text'] == "brot klicke":
+                    if vc['text'] == "tom klicke":
                         subprocess.Popen(["/usr/vosk/click.sh", "1"])
                         print('')
                         
-                    if vc['text'] == "brot blicke":
+                    if vc['text'] == "tom blicke":
                         subprocess.Popen(["/usr/vosk/click.sh", "1"])
                         print('')
                         
-                    if vc['text'] == "brot blick":
+                    if vc['text'] == "tom blick":
                         subprocess.Popen(["/usr/vosk/click.sh", "1"])
                         print('')
                         
-                    if vc['text'] == "brot rechtsklicke":
+                    if vc['text'] == "tom rechtsklicke":
                         subprocess.Popen(["/usr/vosk/click.sh", "3"])
                         print('')
                         
-                    if vc['text'] == "brot klick":
+                    if vc['text'] == "tom klick":
                         subprocess.Popen(["/usr/vosk/click.sh", "1"])
                         print('')
                         
-                    if vc['text'] == "brot rechtsklick":
+                    if vc['text'] == "tom rechtsklick":
                         subprocess.Popen(["/usr/vosk/click.sh", "3"])
+                        print('')
+                        
+
+                    # MULTIMEDIA
+                    if vc['text'] == "tom youtube":
+                        subprocess.Popen(["firefox", "https://www.youtube.com/"])
+                    if vc['text'] == "tom screenshot":
+                        subprocess.Popen(["flameshot", "gui"])
+                        print('')
+
+                    # FENSTER-AKTIONEN
+                    if vc['text'] == "tom fenster schließen":
+                        subprocess.Popen(["xdotool", "key", "Alt_L+F4"])
                         print('')
                         
                     # OS-AKTIONEN
-                    if vc['text'] == "brot fenster schließen":
-                        subprocess.Popen(["xdotool", "key", "Alt_L+F4"])
-                        print('')
-
-                    if vc['text'] == "brot screenshot":
-                        subprocess.Popen(["flameshot", "gui"])
-                        print('')
-                        
-                        x = vc['text'].split()
-                        print(x)
-                    if vc['text'] == "brot sperren":
+                    if vc['text'] == "tom sperren":
                         subprocess.Popen(["xflock4"])
                         print('')
                         
-                        x = vc['text'].split()
-                        print(x)
-                    if vc['text'] == "brot bildschirm sperren":
+                    if vc['text'] == "tom bildschirm sperren":
                         subprocess.Popen(["xflock4"])
                         print('')
-                        
-                        x = vc['text'].split()
-                        print(x)
 
-                    # BROT-AKTIONEN
-                    if vc['text'] == "brot starte dich neu":
+                    # ANDERE-AKTIONEN
+                    if vc['text'] == "tom starte dich neu":
                         print("ich bin müüüüde...")
                         time.sleep(2)
                         sys.stdout.flush()
                         os.execv(sys.argv[0], sys.argv)
-                    if vc['text'] == "brot version":
+                    if vc['text'] == "tom starter dich neu":
+                        print("ich bin müüüüde...")
+                        time.sleep(2)
+                        sys.stdout.flush()
+                        os.execv(sys.argv[0], sys.argv)
+                    if vc['text'] == "tom wer bist du":
                         print("")
-                        print("#############################################")
-                        print("Bread Vosk-Edit Version: " + version)
-                        print("#############################################")
+                        print("Wer bin ich?")
                         print("")
-                        time.sleep(5)
+                        print("Ich bin eine art (sehr kleiner) Sprachassistent, der")
+                        print("gerne mal lustige Sachen sagt.")
+                        print("Meine Spracherkennung (Vosk API) wurde nicht von Felix")
+                        print("gemacht, dann wäre ich ja in 20 Jahren noch nicht fertig.")
+                        print("Allerdings wurde das, was nach der Erkennung passiert,")
+                        print("also was ich mit den erkannten wörtern mache,")
+                        print("von Felix in python programmiert.")
+                        print("Also sowas wie zum Beispiel die Wiedergabe von Witzen,")
+                        print("das Ausführen von Aktionen und einiges mehr.")
+                        print("")
+                        playsound('/usr/vosk/sound/wer-bist-du.mp3')
+
+                    # FUNNY-THINGS
+                    if vc['text'] == "tom was sind die größten weisheiten der menschheit":
+                        print("")
+                        print("Die größten Weisheiten der Menschheit:")
+                        print("")
+                        print("1. I'm here and I'm queer")
+                        print("2. ZUERST die Cornflakes, dann die Milch")
+                        print("3. Felix ist doof")
+                        print("4. Siri, Alexa und Co. sind dumm")
+                        print("5. Nutella OHNE Butter!")
+                        print("6. Ich bin cool")
+                        print("")
+                        playsound('/usr/vosk/sound/weisheiten.mp3')
+                    
+                    if vc['text'] == "tom witzige fakten":
+                        print("")
+                        print("Witzige Fakten:")
+                        print("")
+                        print("1. 0.1 + 0.2 ergibt in Python 0.30000000000000004")
+                        print("")
+                        playsound('/usr/vosk/sound/facts.mp3')
+
+                    if vc['text'] == "tom laber müll":
+                        if bullshit == "bullshit1":
+                            print("")
+                            print("Brot wächst auf bäumen, weil Bäume von Wolken fallen, und Gras am Himmel wächst")
+                            print("")
+                            playsound('/usr/vosk/sound/bullshit1.mp3')
+
+                    if vc['text'] == "tom laber müll":
+                        if bullshit == "bullshit2":
+                            print("")
+                            print("Brot wächst auf bäumen, weil Bäume von Wolken fallen, und Gras am Himmel wächst")
+                            print("")
+                            playsound('/usr/vosk/sound/bullshit1.mp3')
+
+                    # orakel, tom sucht nach dem anfang "tom orakel", und antwortet zufällig. unabhänig der gestellten frage
+                    str = vc['text']
+                    #search using regex
+                    x = re.search('^tom orakel', str)
+                    if(x!=None):
+                        if oracle == "/usr/vosk/oracle/Ja.mp3":
+                            print("\nJa\n")
+                        elif oracle == "/usr/vosk/oracle/Nein.mp3":
+                            print("\nNein\n")
+                        elif oracle == "/usr/vosk/oracle/Eher nicht.mp3":
+                            print("\nEher nicht\n")
+                        elif oracle == "/usr/vosk/oracle/Gestern.mp3":
+                            print("\nGestern\n")
+                        elif oracle == "/usr/vosk/oracle/Immer.mp3":
+                            print("\nImmer\n")
+                        elif oracle == "/usr/vosk/oracle/Morgen.mp3":
+                            print("\nMorgen\n")
+                        elif oracle == "/usr/vosk/oracle/Nie.mp3":
+                            print("\nNie\n")
+                        elif oracle == "/usr/vosk/oracle/Sehr unwahrscheinlich.mp3":
+                            print("\nSehr unwahrscheinlich\n")
+                        elif oracle == "/usr/vosk/oracle/Sehr wahrscheinlich.mp3":
+                            print("\nSehr wahrscheinlich\n")
+                        elif oracle == "/usr/vosk/oracle/Sieht so aus.mp3":
+                            print("\nSieht so aus\n")
+                        elif oracle == "/usr/vosk/oracle/Übermorgen.mp3":
+                            print("\nÜbermorgen\n")
+                        elif oracle == "/usr/vosk/oracle/Vielleicht.mp3":
+                            print("\nVielleicht\n")
+                        elif oracle == "/usr/vosk/oracle/Wahrscheinlich.mp3":
+                            print("\nWahrscheinlich\n")
+                        else:
+                            print("\nNot Found!\n")
+                    if(x!=None):
+	                    playsound(oracle)
+                    if(x!=None):
+                        sys.stdout.flush()
+                        os.execv(sys.argv[0], sys.argv)
+                    else:
+                        print("{")
+                        print('  "partial" : ""')
+                        print("}")
+
 
                     # WITZE
-                    if vc['text'] == "brot erzähle einen witz":
+                    if vc['text'] == "tom erzähle einen witz":
                         if randomize_joke == "witz2":
                             print("")
                             print("Ich schlafe abends sehr schlecht ein.")
@@ -715,6 +945,123 @@ try:
                             print("Weil die Fenster offen sind!")
                             print("")
                             playsound('/usr/vosk/jokes/joke10.mp3')
+                            sys.stdout.flush()
+                            os.execv(sys.argv[0], sys.argv)
+
+                        elif randomize_joke == 'witz11':
+                            print("")
+                            print("Schatz?")
+                            print("")
+                            print("Ja?")
+                            print("")
+                            print("Ich fühle mich so hässlich, so fett und so faltig. Ich brauche ein Kompliment.")
+                            print("")
+                            print("Du hast eine gute Beobachtungsgabe.")
+                            print("")
+                            playsound('/usr/vosk/jokes/joke11.mp3')
+                            sys.stdout.flush()
+                            os.execv(sys.argv[0], sys.argv)
+
+                        elif randomize_joke == 'witz12':
+                            print("")
+                            print("Der Gefängnisdirektor: Was wird nur Ihr armer Vater dazu sagen,")
+                            print("dass sie schon wieder hier sind?")
+                            print("")
+                            print("Fragen Sie ihn doch selbst. Er sitzt nur drei Zellen weiter!")
+                            print("")
+                            playsound('/usr/vosk/jokes/joke12.mp3')
+                            sys.stdout.flush()
+                            os.execv(sys.argv[0], sys.argv)
+
+                        elif randomize_joke == 'witz13':
+                            print("")
+                            print("In der Schule fragt die Lehrerin, was ein Trauerfall ist.")
+                            print("")
+                            print("Sagt der erste Schüler: Wenn ich meine Geldbörse verliere!")
+                            print("")
+                            print("Nein sagt die Lehrerin, das nennt man einen Verlust!")
+                            print("")
+                            print("Sagt der nächste Schüler: Wenn ein Loch in unserm Dach ist, und es hereinregnet!")
+                            print("")
+                            print("Nein sagt die Lehrerin wieder, das nennt man einen Schaden!")
+                            print("")
+                            print("Sagt der dritte Schüler: Wenn unser Bundeskanzler sterben würde!")
+                            print("")
+                            print("Richtig sagt die Lehrerin, das wäre ein Trauerfall, und kein Schaden und kein")
+                            print("Verlust!")
+                            print("")
+                            playsound('/usr/vosk/jokes/joke13.mp3')
+                            sys.stdout.flush()
+                            os.execv(sys.argv[0], sys.argv)
+
+                        elif randomize_joke == 'witz14':
+                            print("")
+                            print("Sagt die Oma zu Fritzchen: Fritzchen, mach den Krimi aus. Du sollst dir nicht immer")
+                            print("so brutales Zeug anschauen. Komm, ich erzähl dir das Märchen wo Hänsel und")
+                            print("Gretel die Hexe im Ofen verbrennen.")
+                            print("")
+                            playsound('/usr/vosk/jokes/joke14.mp3')
+                            sys.stdout.flush()
+                            os.execv(sys.argv[0], sys.argv)
+
+                        elif randomize_joke == 'witz15':
+                            print("")
+                            print("Ein Zeitungsjunge läuft schreiend durch die Straßen:")
+                            print("")
+                            print("Riesenschwindel! Riesenschwindel! 98 Opfer!")
+                            print("")
+                            print("Ein Herr kauft die Zeitung, überfliegt sie und rennt dem Burschen nach: Kein Wort")
+                            print("wahr von deinem Riesenschwindel!")
+                            print("")
+                            print("Der Junge schreit:")
+                            print("")
+                            print("Riesenschwindel! Riesenschwindel! 99 Opfer!")
+                            print("")
+                            playsound('/usr/vosk/jokes/joke15.mp3')
+                            sys.stdout.flush()
+                            os.execv(sys.argv[0], sys.argv)
+
+                        elif randomize_joke == 'witz16':
+                            print("")
+                            print("Gebet zum Neuen Jahr: Lieber Gott! Bitte mach meine Taille schlanker und mein")
+                            print("Bankkonto fetter.")
+                            print("")
+                            print("Und bitte, bitte, verwechsle es nicht wieder wie letztes Jahr!")
+                            print("")
+                            playsound('/usr/vosk/jokes/joke16.mp3')
+                            sys.stdout.flush()
+                            os.execv(sys.argv[0], sys.argv)
+
+                        elif randomize_joke == 'witz17':
+                            print("")
+                            print("Fritzchen ist krank und bekommt vom Doktor eine Medizin.")
+                            print("")
+                            print("Er fragt: Herr Doktor, hat diese Medizin auch Nebenwirkungen?")
+                            print("")
+                            print("Ja, du kannst schon morgen wieder in die Schule gehen!")
+                            print("")
+                            playsound('/usr/vosk/jokes/joke17.mp3')
+                            sys.stdout.flush()
+                            os.execv(sys.argv[0], sys.argv)
+
+                        elif randomize_joke == 'witz18':
+                            print("")
+                            print("Sitzen zwei Männer im Zug. Der eine isst Apfelkerne.")
+                            print("")
+                            print("Da fragt der andere: Warum essen sie denn Apfelkerne?")
+                            print("")
+                            print("Das macht intelligent.")
+                            print("")
+                            print("Darf ich auch welche haben?")
+                            print("")
+                            print("Ja, für fünf Euro.")
+                            print("")
+                            print("Er bezahlt fünf Euro, bekommt die Kerne und isst sie. Dann murmelt er kauend:")
+                            print("Eigentlich hätte ich mir für fünf Euro ja eine ganze Tüte Äpfel kaufen können!")
+                            print("")
+                            print("Entgegnet der andere: Sehen sie, es wirkt schon!")
+                            print("")
+                            playsound('/usr/vosk/jokes/joke18.mp3')
                             sys.stdout.flush()
                             os.execv(sys.argv[0], sys.argv)
                     
