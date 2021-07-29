@@ -5,13 +5,13 @@ Ein Repo in dem alle Ideen und selbst (um-)programmierte Skripte und anderer Cod
 Das Projekt besteht aus einem Community Projekt, und soll ein 'nachfolger' von JeanOS sein.  
 
 # Informationen
-- Distrobution-Based: Momentan Ubuntu 20.04 LTS. Wenn 21.10 rauskommt werden wir selbstverständlich wechseln.
-- Desktop: XFCE 4.14
+- Distrobution-Based: Momentan Ubuntu 20.04 LTS als Server. Wenn 22.04 LTS rauskommt werden wir selbstverständlich wechseln.
+- Desktop: - STEHT OFFEN -
 - Codename: Aphrodite
 - Kernel: 5.4.0
 - Bash: 4.4.20  
   
-**Stand: 18.04.2021 23:55 Uhr**
+**Stand: 29.07.2021 11:33 Uhr**
 
 
 ## BRANDNEU! LinuxGuides OS for WSL2
