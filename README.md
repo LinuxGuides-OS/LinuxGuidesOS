@@ -6,13 +6,13 @@ Das Projekt besteht aus einem Community Projekt, und soll ein 'nachfolger' von J
 
 # Informationen
 - Distrobution-Based: Momentan Ubuntu 20.04 LTS als Server. Wenn 22.04 LTS rauskommt werden wir selbstverständlich wechseln.
-- Desktop: - STEHT OFFEN -
+- Desktop: GNOME und XFCE
 - Paketmanager: Flatpak
 - Codename: Aphrodite
 - Kernel: 5.4.0
 - Bash: 4.4.20  
   
-**Stand: 30.07.2021 09:30 Uhr**
+**Stand: 30.07.2021 12:14 Uhr**
 
 
 ## BRANDNEU! LinuxGuides OS for WSL2
