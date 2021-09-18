@@ -1,6 +1,6 @@
 # LinuxGuidesOS
 
-Ein Repo in dem alle Ideen und selbst (um-)programmierte Skripte und anderer Code für das geplante "LinuxGuides OS" zusammenlaufen
+Ein Repo in dem alle Ideen und selbst (um-)programmierte Skripte und anderer Code für das geplante "[LinuxGuides OS](https://linuxguides-os.de/)" zusammenlaufen
 
 Das Projekt besteht aus einem Community Projekt, und soll ein 'nachfolger' von JeanOS sein.  
 
